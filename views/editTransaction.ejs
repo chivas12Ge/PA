@@ -1,0 +1,46 @@
+<div class="content">
+    <form method="POST" action="/transaction/updateTransaction">
+        <h2>Edit Transaction:</h2>
+        <input type="hidden" name="itemId" value="<%= item._id %>">
+        <label for="inputDescription">description</label>
+        <input
+          type="text"
+          name="description"
+          id="inputDescription"
+          value="<%= item.description %>"
+          placeholder="description"
+          autofocus
+        />
+
+        <label for="inputAmount">amount</label>
+        <input
+          type="number"
+          name="amount"
+          id="inputAmount"
+          value="<%= item.amount %>"
+          placeholder=0
+        />
+
+        <label for="inputCategory">category</label>
+        <input
+          type="text"
+          name="category"
+          id="inputCategory"
+          value="<%= item.category %>"
+          placeholder="category"
+        />
+
+        <label for="inputDate">date</label>
+        <input
+          type="date"
+          name="date"
+          id="inputDate"
+          value="<%= item.date %>"
+          placeholder="date"
+          required
+        />
+        
+       
+        <button type="submit" >Update</button>
+      </form>
+</div>

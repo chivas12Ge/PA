@@ -1,0 +1,122 @@
+<h1>Transactions for <%=user.username %></h1>
+<script src="../public/js/transactionController.js"></script>
+
+<script src=""></script>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a href="/transaction/byCategory">
+                <button type="button" class="btn btn-primary">Group By category</button>
+            </a>
+            
+        </div>
+        <div class="col">
+            <a href="/transaction?sortBy=category">
+                <button type="button" class="btn btn-primary" >Sort By Category</button>
+            </a>
+            
+        </div>
+        <div class="col">
+            <a href="/transaction?sortBy=amount">
+                <button type="button" class="btn btn-primary" >Sort By Amount</button>
+            </a>
+        </div>
+        <div class="col">
+            <a href="/transaction?sortBy=date">
+                <button type="button" class="btn btn-primary" >Sort By Date</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2" style="background-color: #f8f9fa; padding: 15px;">
+            <p>description</p>
+        </div>
+        <div class="col-md-2" style="background-color: #f8f9fa; padding: 15px;">
+            <p>amount</p>
+        </div>
+        <div class="col-md-2" style="background-color: #f8f9fa; padding: 15px;">
+           <p>category</p>
+        </div>
+        <div class="col-md-2" style="background-color: #f8f9fa; padding: 15px;">
+            <p>date</p>
+        </div>
+        <div class="col-md-2" style="background-color: #f8f9fa; padding: 15px;">
+            <p>edit</p>
+        </div>
+        <div class="col-md-2" style="background-color: #f8f9fa; padding: 15px;">
+            <p>delete</p>
+        </div>
+    </div>
+    <% items.forEach(item=>{ %>
+
+    <div class="row">
+        <div class="col-md-2" style="background-color: #f8f9fa; padding: 15px;">
+            <%=item.description %>
+        </div>
+        <div class="col-md-2" style="background-color: #f8f9fa; padding: 15px;">
+            <%=item.amount %>
+        </div>
+        <div class="col-md-2" style="background-color: #f8f9fa; padding: 15px;">
+            <%=item.category %>
+        </div>
+        <div class="col-md-2" style="background-color: #f8f9fa; padding: 15px;">
+            <%=item.date.toLocaleDateString()%>
+        </div>
+        <div class="col-md-2" style="background-color: #f8f9fa; padding: 15px;">
+            <a 
+                      href="/transaction/edit/<%= item._id %>">
+                      <i class="bi bi-pencil-square"></i>
+                  </a>
+        </div>
+        <div class="col-md-2" style="background-color: #f8f9fa; padding: 15px;">
+            <a 
+                      href="/transaction/remove/<%= item._id %>">
+                      <i class="bi bi-trash"></i>
+                  </a>
+        </div>
+    </div>
+    <% }) %>
+</div>
+
+<div class="content">
+    <form action="transaction" method="POST" >
+        <h2>Create a new transaction:</h2>
+        <label for="inputDescription">description</label>
+        <input
+          type="text"
+          name="description"
+          id="inputDescription"
+          placeholder="description"
+          autofocus
+          required
+        />
+        <label for="inputAmount">amount</label>
+        <input
+          type="number"
+          name="amount"
+          id="inputAmount"
+          placeholder=0
+          required
+        />
+        <label for="inputCategory">category</label>
+        <input
+          type="text"
+          name="category"
+          id="inputCategory"
+          placeholder="category"
+          required
+        />
+        <label for="inputDate">date</label>
+        <input
+          type="date"
+          name="date"
+          id="inputDate"
+          placeholder="mm/dd/yyyy"
+          required
+        />
+        <button type="submit">Submit</button>
+    </form>
+</div>
